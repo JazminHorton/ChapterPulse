@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { useUserAuth } from "./_utils/auth-context"; // Ensure this path is correct.
+import { useUserAuth } from "app/_utils/auth-context"; // Ensure this path is correct.
 import Link from 'next/link';
 
 const LandingPage = () => {
@@ -18,8 +18,8 @@ const LandingPage = () => {
             <div className="relative w-full overflow-hidden rounded-2xl max-w-lg bg-gray-200 shadow-inner p-8 mx-auto text-center shadow-xl">
                 {!user ? (
                     <>
-                        <h1 className="text-6xl text-orange-600 mb-4">Sign In </h1>
-                        <div className="flex flex-col items-center space-y-4 bg-white p-4 rounded-2xl shadow-inner shadow-xl border border-orange-600">
+                        <h1 className="text-6xl text-orange-600 mb-4">Log In </h1>
+                        <div className="flex flex-col items-center space-y-4 bg-white p-4 rounded-2xl shadow-inner shadow-xl border border-purple-600">
                             <p className="text-xl text-black">Please log in to access ChapterPulse.</p>
                             <button 
                                 onClick={gitHubSignIn} 
@@ -33,7 +33,7 @@ const LandingPage = () => {
                 ) : (
                     <>
                         <div className="flex flex-col items-center space-y-4 bg-white p-4 rounded-2xl shadow-inner">
-                            <p className="text-xl text-black">Welcome, {user.displayName} ({user.email})</p>
+                            <p className="text-xl text-black">Welcome, {user.displayName} ({user.email}) to ChapterPulse!</p>
                             <button 
                                 onClick={firebaseSignOut} 
                                 className="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400"
@@ -42,9 +42,9 @@ const LandingPage = () => {
                             </button>
                         </div>
                         <div className="mt-4">
-                            <Link href="/page">
+                            <Link href="/">
                                   <div className="inline-block bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-400">
-                                    Home Page
+                                    Home
                                     </div>
                             </Link>
                         </div>
