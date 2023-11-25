@@ -23,3 +23,13 @@ export default function Home() {
   );
 }
 
+//Next order of business:
+//1. Create a login page (done)
+//2. create home page
+//3. create profile page
+//4. create reading list page
+//5. add functionality to pages (adding manga to reading lists, searching for manga, etc.)
+//6. add styling to pages
+//Note: I have to wait for the API from MAL before I can add the manga data to the pages.
+//So until then, I'll just add some filler data to the pages and then replace it with the API data later.
+//Make the pages and then write the code for the API data without the API data. like "" instead of the actual data.
