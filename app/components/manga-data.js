@@ -10,10 +10,10 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 
-async function getManga() {
+async function getMangaById() {
   try {
     const response = await fetch(
-      `https://api.jikan.moe/v4/manga`
+      `https://api.jikan.moe/v4/manga/{id}`
     );
     const data = await response.json();
 
