@@ -27,27 +27,27 @@ export default function Home() {
               </li>
               <li className="mr-5 transition duration-300 ease-in-out transform hover:scale-105">
                 <button className="inline-block p-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
-                  <Link href="/">Log out</Link>
+                  <Link href="/layout">Log out</Link>
                 </button>
               </li>
               <li className="mr-5 transition duration-300 ease-in-out transform hover:scale-105">
                 <button className="inline-block p-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
-                  <Link href="./components/manga-data">Manga</Link>
+                  <Link href="./components/random-manga">Manga</Link>
                 </button>
               </li>
               <li className="mr-5 transition duration-300 ease-in-out transform hover:scale-105">
                 <button className="inline-block p-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
-                  <Link href="/">Your List</Link>
+                  <Link href="./components/manga-list">Your List</Link>
                 </button>
               </li>
               <li className = "mr-5 transition duration-300 ease-in-out transform hover:scale-105">
                 <button className="inline-block p-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
-                  <Link href="/">Search for Manga</Link>
+                  <Link href="./components/search-manga">Search for Manga</Link>
                 </button>
               </li>
               <li className = "mr-5 transition duration-300 ease-in-out transform hover:scale-105">
                 <button className="inline-block p-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
-                  <Link href="/">Your Profile</Link>
+                  <Link href="./components/profile">Your Profile</Link>
                 </button>
               </li>
               </ul>
