@@ -9,38 +9,29 @@
 
 "use client";
 import React, { useState, useEffect } from 'react';
-import { carousel } from 'react-bootstrap'; //for possible styling of page
 
-//how to show manga like in a home page? Or could just make a 'random manga' page
-async function getMangaById(id) {
+//when the user clicks on the button, it will display a random manga from the API and it's information
+Max_manga_ID = 6000; //I don't need all of them, just a lot of them
+Min_manga_ID = 1; //need at least 1
+Random_manga_ID = Math.floor(Math.random() * (Max_manga_ID - Min_manga_ID + 1)) + Min_manga_ID; //random number between 1 and 6000 (IDEA)
+async function FetchRandomManga(id) {
   try {
     const response = await fetch('https://api.jikan.moe/v4/manga/{id}'
     );
     const data = await response.json();
-    return data.message;
-  } catch (error) {
+    return data;
+  }
+  catch (error) {
     console.error(error);
   }
-}
 
-export default function MangaData() {
+export default function RandomManga() {
   const [manga, setManga] = useState(null);
 
-  useEffect(() => {
-    getMangaById().then((manga) => {
-      setManga(manga);
-    });
-  }, []);
-
-  if (!manga) {
-    return <div>Loading...</div>;
+  async function LoadRandomManga() {
+    const id = Math.floor(Math.random() * (Max_manga_ID - Min_manga_ID + 1)) + Min_manga_ID; //random number between 1 and 6000 (IDEA)
+    const newManga = await LoadRandomManga(id);
+    setManga(newManga);
   }
-
-  return (
-    <div>
-      <h1>{manga.title}</h1>
-      <p>{manga.synopsis}</p>
-
-    </div>
-  );
+  
 }

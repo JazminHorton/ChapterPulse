@@ -70,7 +70,9 @@ export default function Home() {
 //I also need to ask Aaron about Vercel and the log in feature. My Vercel account is made with my github account so I'm not sure if I can make it so that you can log in with your own account or not using github in my deployment (it doesn't work when deployed)
 //Other than that though, this should be ezpz, I just need to figure out how to do these things and then I'm done.
 // I'm not sure how strict Aaron will be on marking in terms of features or design so maybe I'll check with him.
-
+//HUGE NOTE: MARKING IS BASED ON THE SELF-REFLECTION, NOTE THE ACTUAL PROJECT. SO LONG AS SOMETHING IS THERE, IT'S FINE. :D
+//The only thing I'm worried about is the API. I'm not sure if I'll be able to get it in time. I'll try my best though.
+//But so long as something is there, it's okay since the marking for the project is just the self-reflection.
 
 
 //Next order of business:
