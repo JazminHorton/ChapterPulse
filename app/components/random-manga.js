@@ -11,10 +11,9 @@
 import React, { useState, useEffect } from 'react';
 
 //when the user clicks on the button, it will display a random manga from the API and it's information
-Max_manga_ID = 6000; //I don't need all of them, just a lot of them
-Min_manga_ID = 1; //need at least 1
-Random_manga_ID = Math.floor(Math.random() * (Max_manga_ID - Min_manga_ID + 1)) + Min_manga_ID; //random number between 1 and 6000 (IDEA)
-async function FetchRandomManga(id) {
+MAX_QUOTE_ID = 6000; //I don't need all of them, just a lot of them
+MIN_QUOTE_ID = 1; //need at least 1
+async function fetchManga(id) {
   try {
     const response = await fetch('https://api.jikan.moe/v4/manga/{id}'
     );
@@ -24,14 +23,36 @@ async function FetchRandomManga(id) {
   catch (error) {
     console.error(error);
   }
+}
 
 export default function RandomManga() {
   const [manga, setManga] = useState(null);
 
-  async function LoadRandomManga() {
-    const id = Math.floor(Math.random() * (Max_manga_ID - Min_manga_ID + 1)) + Min_manga_ID; //random number between 1 and 6000 (IDEA)
-    const newManga = await LoadRandomManga(id);
+  async function loadRandomManga() {
+    const id = Math.floor(Math.random() * (MAX_QUOTE_ID - MIN_QUOTE_ID + 1) + MIN_QUOTE_ID);
+    const newQuote = await fetchManga(id);
+    newManga.id = id;
     setManga(newManga);
   }
-  
+  useEffect(() => {
+    loadRandomManga();
+  }, []);
+
+  return (
+    <section>
+      <Heading title="Try your luck and see what story you get!" />
+      {quote ? (
+        <Manga manga={manga} onAddFavourite={onAddFavourite} />
+      ) : (
+        "Loading..."
+      )}
+      <button
+        className="mt-4 px-4 py-2 w-full rounded-md bg-gray-300 hover:bg-emerald-300"
+        onClick={loadRandomManga}
+      >
+        Next Manga
+      </button>
+    </section>
+  );
 }
+
