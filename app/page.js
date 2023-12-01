@@ -32,6 +32,16 @@ export default function Home() {
                   <Link href="/">List</Link>
                 </button>
               </li>
+              <li className = "mr-5 transition duration-300 ease-in-out transform hover:scale-105">
+                <button className="inline-block p-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
+                  <Link href="/">Search</Link>
+                </button>
+              </li>
+              <li className = "mr-5 transition duration-300 ease-in-out transform hover:scale-105">
+                <button className="inline-block p-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
+                  <Link href="/">Profile</Link>
+                </button>
+              </li>
               </ul>
           </div>
         </ul>
@@ -40,6 +50,20 @@ export default function Home() {
     </main>
   );
 }
+
+//Notes:
+//Profile, Search, List and Manga pages are empty right now but should be in a 'Components' or 'Pages' folder
+//I'm not sure if I should make the log in feature the first required page or not. Like if it should be the starting one or if I should make it so that you can access the other pages without logging in.
+//I'm also not sure if I should make the log in page a pop up or not. I think it would be better if it was a pop up but I'm not sure how to do that.
+//I also wanna give the website a logo but I'm not sure how to incorporate that into the website. Both functionality and design wise.
+//But either way, if I can do these things, I think the website will be pretty much done.
+//If worst comes to worst and I can't get the API in time, I'll ask Aaron in person if I can either not use an API or just hard code manga in that link to MAL as examples
+//Like I wanted to do a carousel of manga on the home page but I can't do that without the API so I'll just hard code some manga in there as examples and link them to MAL (need to figure out how to do that)
+//I also need to ask Aaron about Vercel and the log in feature. My Vercel account is made with my github account so I'm not sure if I can make it so that you can log in with your own account or not using github in my deployment (it doesn't work when deployed)
+//Other than that though, this should be ezpz, I just need to figure out how to do these things and then I'm done.
+// I'm not sure how strict Aaron will be on marking in terms of features or design so maybe I'll check with him.
+
+
 
 //Next order of business:
 //1. Create a login page (done)
