@@ -1,8 +1,15 @@
 import Link from "next/link";
 
 export default function Home() {
+
+  const containerStyle = {
+    backgroundImage: 'url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fanime-library%2F2&psig=AOvVaw3WVu8ZaMsK309-bEee8uID&ust=1701477594489000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCwi4-A7YIDFQAAAAAdAAAAABAE")',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  };
+
   return (
-    <header className='flex min-h-screen flex-col items-center justify-center p-24'>
+    <main className='flex min-h-screen flex-col items-center justify-center p-24' style={containerStyle}>
       <nav className="bg-black text-white border border-white p-4 rounded-lg text-center">
         <h1 className="text-6xl text-white mb-6">ChapterPulse</h1>
         <div className="group hover:text-green-500">
@@ -19,7 +26,8 @@ export default function Home() {
           </div>
         </ul>
       </nav>
-    </header>
+      <footer />
+    </main>
   );
 }
 

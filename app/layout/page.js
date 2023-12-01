@@ -10,6 +10,7 @@ const LandingPage = () => {
         <main>
         <div 
             style={{ 
+                backgroundColor: 'white',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }} 
