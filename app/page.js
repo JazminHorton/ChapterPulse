@@ -11,7 +11,9 @@ export default function Home() {
   return (
     <main className='flex min-h-screen flex-col items-center justify-center p-24' style={containerStyle}>
       <nav className="bg-black text-white border border-white p-4 rounded-lg text-center">
+        <a className="flex flex-col items-center justify-center">
         <img src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjExNjAtMDM2LnBuZw.png" alt="ChapterPulse Logo" className="w-24 h-24 mr-2" />
+        </a>
         <h1 className="text-6xl text-white mb-6">ChapterPulse</h1>
         <div className="group hover:text-green-500">
         </div>
@@ -30,7 +32,7 @@ export default function Home() {
               </li>
               <li className="mr-5 transition duration-300 ease-in-out transform hover:scale-105">
                 <button className="inline-block p-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
-                  <Link href="/">Manga</Link>
+                  <Link href="./components/manga-data">Manga</Link>
                 </button>
               </li>
               <li className="mr-5 transition duration-300 ease-in-out transform hover:scale-105">

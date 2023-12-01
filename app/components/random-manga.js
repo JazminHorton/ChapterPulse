@@ -9,27 +9,38 @@
 
 "use client";
 import React, { useState, useEffect } from 'react';
+import { carousel } from 'react-bootstrap'; //for possible styling of page
 
-async function getMangaById() {
+//how to show manga like in a home page? Or could just make a 'random manga' page
+async function getMangaById(id) {
   try {
-    const response = await fetch(
-      `https://api.jikan.moe/v4/manga/{id}`
+    const response = await fetch('https://api.jikan.moe/v4/manga/{id}'
     );
     const data = await response.json();
-
-    if (data && data.length > 0) {
-      const mangaDetails = data.meals.map((meal) =>
-        fetch(
-          `https://api.jikan.moe/v4/manga/'`
-        ).then((res) => res.json())
-      );
-
-      const mealDetails = await Promise.all(mangaDetails);
-      return mealDetails.map((detail) => detail.meals[0]);
-    }
-    return [];
+    return data.message;
   } catch (error) {
-    console.error('There was a problem with the fetch operation: ', error.message);
-    throw error;
+    console.error(error);
   }
+}
+
+export default function MangaData() {
+  const [manga, setManga] = useState(null);
+
+  useEffect(() => {
+    getMangaById().then((manga) => {
+      setManga(manga);
+    });
+  }, []);
+
+  if (!manga) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <h1>{manga.title}</h1>
+      <p>{manga.synopsis}</p>
+
+    </div>
+  );
 }
