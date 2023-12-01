@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
 
   const containerStyle = {
-    backgroundImage: 'url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fanime-library%2F2&psig=AOvVaw3WVu8ZaMsK309-bEee8uID&ust=1701477594489000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCwi4-A7YIDFQAAAAAdAAAAABAE")',
+    backgroundImage: 'url("https://64.media.tumblr.com/3e49ab707747e5b1aff5b530221c1aae/tumblr_o7srycOJ9K1vupf7jo1_640.gif")',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
   };
@@ -22,6 +22,16 @@ export default function Home() {
                   <Link href="/layout">Log in</Link>
                 </button>
               </li>
+              <li className="mr-5 transition duration-300 ease-in-out transform hover:scale-105">
+                <button className="inline-block p-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
+                  <Link href="/">Manga</Link>
+                </button>
+              </li>
+              <li className="mr-5 transition duration-300 ease-in-out transform hover:scale-105">
+                <button className="inline-block p-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
+                  <Link href="/">List</Link>
+                </button>
+              </li>
               </ul>
           </div>
         </ul>
@@ -33,11 +43,11 @@ export default function Home() {
 
 //Next order of business:
 //1. Create a login page (done)
-//2. create home page
-//3. create profile page
-//4. create reading list page
+//2. create home page (Almost done, maybe include Header and Footer here)
+//3. create profile page (scrapped)
+//4. create reading list page (WIP)
 //5. add functionality to pages (adding manga to reading lists, searching for manga, etc.)
-//6. add styling to pages
+//6. add styling to pages (WIP)
 //Note: I have to wait for the API from MAL before I can add the manga data to the pages.
 //So until then, I'll just add some filler data to the pages and then replace it with the API data later.
 //Make the pages and then write the code for the API data without the API data. like "" instead of the actual data.
