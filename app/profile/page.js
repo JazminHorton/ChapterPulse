@@ -10,7 +10,8 @@ const Profile = () => {
       };
 
   return (
-    <div className="container mx-auto p-8" style={containerStyle}>
+    <div className='flex min-h-screen' style={containerStyle}>
+    <div className="container mx-auto p-8">
       <div className="flex items-center justify-center">
         <img
           src="https://i.pinimg.com/236x/ab/37/26/ab3726e8c3b97fd86793a1db66701788.jpg"
@@ -18,11 +19,10 @@ const Profile = () => {
           className="w-32 h-32 rounded-full mr-4"
         />
         <div>
-          <h1 className="text-4xl font-bold">Raverz</h1>
-          <p className="text-gray-500">Manga Connoisseur</p>
+          <h1 className="text-4xl font-bold text">Raverz</h1>
+          <p className="text-500">Manga Connoisseur</p>
         </div>
       </div>
-
       <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">About Me</h2>
         <p className="text-700">
@@ -36,7 +36,7 @@ const Profile = () => {
           <li className="flex items-center mb-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 mr-2 text-gray-500"
+              className="h-6 w-6 mr-2 text-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -53,7 +53,7 @@ const Profile = () => {
           <li className="flex items-center mb-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 mr-2 text-gray-500"
+              className="h-6 w-6 mr-2 text-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -68,6 +68,7 @@ const Profile = () => {
             (123) 456-7890
           </li>
         </ul>
+        </div>
       </div>
     </div>
   );
