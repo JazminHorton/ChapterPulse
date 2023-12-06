@@ -1,1 +1,0 @@
-//can just make a fake profile page with a link to their list and a link to the search page
