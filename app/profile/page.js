@@ -1,6 +1,7 @@
 // components/Profile.js
-
+"use client"
 import React from 'react';
+import Link from 'next/link';
 
 const Profile = () => {
     const containerStyle = {
@@ -12,6 +13,11 @@ const Profile = () => {
   return (
     <div className='flex min-h-screen' style={containerStyle}>
     <div className="container mx-auto p-8">
+    <Link legacyBehavior href="/">
+        <a className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+        Home
+        </a>
+    </Link>
       <div className="flex items-center justify-center">
         <img
           src="https://i.pinimg.com/236x/ab/37/26/ab3726e8c3b97fd86793a1db66701788.jpg"
@@ -66,12 +72,12 @@ const Profile = () => {
               />
             </svg>
             (123) 456-7890
-          </li>
+          </li> 
         </ul>
         </div>
       </div>
     </div>
   );
 };
-
+//Many add a log out button here
 export default Profile;
