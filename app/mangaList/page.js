@@ -1,32 +1,31 @@
 // components/MangaList.js
 "use client"
-import React, { useState } from 'react';
-import Modal from 'react-modal';
 import Link from 'next/link';
+import React, { useState } from 'react';
 
 const MangaList = () => {
   const [mangaList, setMangaList] = useState([
     {
       id: 1,
-      title: 'One Piece',
-      author: 'Eiichiro Oda',
-      chapters: 1043,
-      volumes: 100,
-      status: 'Publishing',
-      imageUrl: 'https://example.com/one-piece-cover.jpg',
-      rating: 4,
-      comments: 'Great series!',
+      title: 'Magus of the Library',
+      author: 'Mitsu Izumi',
+      chapters: 29,
+      volumes: 7,
+      status: 'Reading',
+      imageUrl: 'https://www.uk-anime.net/Images/magus-top.png?width=610&height=350&mode=crop',
+      rating: 10,
+      comments: 'Masterpiece!!',
     },
     {
       id: 2,
-      title: 'My Hero Academia',
-      author: 'Kohei Horikoshi',
-      chapters: 345,
-      volumes: 34,
-      status: 'Publishing',
-      imageUrl: 'https://example.com/my-hero-academia-cover.jpg',
-      rating: 5,
-      comments: 'Awesome characters!',
+      title: 'Shadows House',
+      author: 'Sōmatō',
+      chapters: 50,
+      volumes: 10,
+      status: 'Reading',
+      imageUrl: 'https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx104063-ycQHMGvfoET1.png',
+      rating: 9,
+      comments: 'One of the best mystery manga out there!',
     },
     // Add more manga items as needed
   ]);
@@ -45,26 +44,23 @@ const MangaList = () => {
     comments: '',
   });
 
-  const openAddMangaModal = () => {
-    setIsAdding(true);
-    setIsEditing(false);
-  };
+  const [sortOption, setSortOption] = useState(null);
 
-  const closeAddMangaModal = () => {
-    setIsAdding(false);
-    setIsEditing(false);
-    setEditManga({
-      id: null,
-      title: '',
-      author: '',
-      chapters: 0,
-      volumes: 0,
-      status: '',
-      imageUrl: '',
-      rating: 0,
-      comments: '',
+  const handleSort = (option) => {
+    setSortOption(option);
+    setMangaList((prevList) => {
+      let sortedList = [...prevList];
+      if (option === 'status') {
+        sortedList.sort((a, b) => a.status.localeCompare(b.status));
+      } else if (option === 'rating') {
+        sortedList.sort((a, b) => b.rating - a.rating);
+      } else if (option === 'title') {
+        sortedList.sort((a, b) => a.title.localeCompare(b.title));
+      }
+      return sortedList;
     });
   };
+  
 
   const handleEdit = (manga) => {
     setEditManga(manga);
@@ -87,28 +83,113 @@ const MangaList = () => {
       setMangaList(updatedList);
     }
 
-    closeAddMangaModal();
+    setIsAdding(false);
+    setIsEditing(false);
+    setEditManga({
+      id: null,
+      title: '',
+      author: '',
+      chapters: 0,
+      volumes: 0,
+      status: '',
+      imageUrl: '',
+      rating: 0,
+      comments: '',
+    });
   };
 
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-8">My Manga List</h1>
+      <div className="flex items-center justify-between mb-4">
+        <h1 className="text-4xl font-bold">My Manga List</h1>
+        <div className="flex items-center space-x-4">
+          <button
+            onClick={() => {
+              setIsAdding(true);
+              setIsEditing(false);
+            }}
+            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+          >
+            Add Manga
+          </button>
+          <span className="mr-4">Sort By:</span>
+          <button onClick={() => handleSort('status')} className="mr-2 bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600">
+            Status
+          </button>
+          <button onClick={() => handleSort('rating')} className="mr-2 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
+            Rating
+          </button>
+          <button onClick={() => handleSort('title')} className="mr-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Title</button>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+            <Link href="/">
+              Home
+            </Link>
+          </button>
+        </div>
+      </div>
 
-     {/* Home and Add Manga Buttons */}
-    <div className="flex justify-between mb-4">
-    <button
-    onClick={openAddMangaModal}
-    className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
-    Add Manga
-    </button>
-    <Link legacyBehavior href="/">
-        <a className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-        Home
-        </a>
-    </Link>
-    </div>
+      {isAdding && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+          <div className="bg-white p-8 rounded-md">
+            <h2 className="text-2xl font-bold mb-4 text-black">Add Manga</h2>
+            {/* ... (add your input fields for adding manga) */}
+            <button
+              onClick={() => {
+                setIsAdding(false);
+                setEditManga({
+                  id: null,
+                  title: '',
+                  author: '',
+                  chapters: 0,
+                  volumes: 0,
+                  status: '',
+                  imageUrl: '',
+                  rating: 0,
+                  comments: '',
+                });
+              }}
+              className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
+            >
+              Cancel
+            </button>
+            <button onClick={handleSave} className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
+              Save
+            </button>
+          </div>
+        </div>
+      )}
 
-      {/* Manga List */}
+      {isEditing && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+          <div className="bg-white p-8 rounded-md">
+            <h2 className="text-2xl font-bold mb-4 text-black">Edit Manga</h2>
+            {/* ... (add your input fields for editing manga) */}
+            <button
+              onClick={() => {
+                setIsEditing(false);
+                setEditManga({
+                  id: null,
+                  title: '',
+                  author: '',
+                  chapters: 0,
+                  volumes: 0,
+                  status: '',
+                  imageUrl: '',
+                  rating: 0,
+                  comments: '',
+                });
+              }}
+              className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
+            >
+              Cancel
+            </button>
+            <button onClick={handleSave} className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
+              Save
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {mangaList.map((manga) => (
           <div key={manga.id} className="bg-white p-4 rounded-md shadow-md">
@@ -117,13 +198,13 @@ const MangaList = () => {
               alt={`${manga.title} Cover`}
               className="w-full h-40 object-cover mb-4 rounded-md"
             />
-            <h2 className="text-lg font-bold">{manga.title}</h2>
-            <p className="text-gray-500">Author: {manga.author}</p>
-            <p className="text-gray-500">Chapters: {manga.chapters}</p>
-            <p className="text-gray-500">Volumes: {manga.volumes}</p>
-            <p className="text-gray-500">Status: {manga.status}</p>
-            <p className="text-gray-500">Rating: {manga.rating}</p>
-            <p className="text-gray-500">Comments: {manga.comments}</p>
+            <h2 className="text-lg font-bold text-black">{manga.title}</h2>
+            <p className="text-black">Author: {manga.author}</p>
+            <p className="text-black">Chapters: {manga.chapters}</p>
+            <p className="text-black">Volumes: {manga.volumes}</p>
+            <p className="text-black">Status: {manga.status}</p>
+            <p className="text-black">Rating: {manga.rating}</p>
+            <p className="text-black">Comments: {manga.comments}</p>
 
             <div className="flex justify-between mt-4">
               <button
@@ -142,29 +223,6 @@ const MangaList = () => {
           </div>
         ))}
       </div>
-
-      {/* Add Manga Modal */}
-      <Modal
-        isOpen={isAdding || isEditing}
-        onRequestClose={closeAddMangaModal}
-        className="modal"
-        overlayClassName="overlay"
-      >
-        <div className="bg-white p-8 rounded-md">
-          <h2 className="text-2xl font-bold mb-4">{isAdding ? 'Add Manga' : 'Edit Manga'}</h2>
-          <label className="block mb-2">Title:</label>
-          <input
-            type="text"
-            value={editManga.title}
-            onChange={(e) => setEditManga({ ...editManga, title: e.target.value })}
-            className="w-full p-2 mb-4 border rounded-md"
-          />
-          {/* Add more input fields as needed */}
-          <button onClick={handleSave} className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
-            Save
-          </button>
-        </div>
-      </Modal>
     </div>
   );
 };
