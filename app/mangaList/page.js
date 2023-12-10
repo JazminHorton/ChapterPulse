@@ -257,11 +257,95 @@ const MangaList = () => {
         </div>
       )}
 
-      {isEditing && (
+{isEditing && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
           <div className="bg-white p-8 rounded-md">
             <h2 className="text-2xl font-bold mb-4 text-black">Edit Manga</h2>
-            {/* ... (add your input fields for editing manga) */}
+
+            {/* ... (other input fields) */}
+
+            <div className="mb-4">
+              <label htmlFor="chapters" className="block text-black font-bold mb-1">
+                Chapters
+              </label>
+              <div className="flex items-center">
+                <input
+                  type="number"
+                  id="chapters"
+                  value={editManga.chapters}
+                  onChange={(e) => setEditManga({ ...editManga, chapters: e.target.value })}
+                  className="w-full border border-gray-300 text-black rounded-md p-2 mr-2"
+                />
+                <button
+                  onClick={() => setEditManga({ ...editManga, chapters: editManga.chapters + 1 })}
+                  className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600"
+                >
+                  +
+                </button>
+                <button
+                  onClick={() => setEditManga({ ...editManga, chapters: Math.max(0, editManga.chapters - 1) })}
+                  className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600"
+                >
+                  -
+                </button>
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="volumes" className="block text-black font-bold mb-1">
+                Volumes
+              </label>
+              <div className="flex items-center">
+                <input
+                  type="number"
+                  id="volumes"
+                  value={editManga.volumes}
+                  onChange={(e) => setEditManga({ ...editManga, volumes: e.target.value })}
+                  className="w-full border border-gray-300 text-black rounded-md p-2 mr-2"
+                />
+                <button
+                  onClick={() => setEditManga({ ...editManga, volumes: editManga.volumes + 1 })}
+                  className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600"
+                >
+                  +
+                </button>
+                <button
+                  onClick={() => setEditManga({ ...editManga, volumes: Math.max(0, editManga.volumes - 1) })}
+                  className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600"
+                >
+                  -
+                </button>
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="rating" className="block text-black font-bold mb-1">
+                Rating
+              </label>
+              <input
+                type="number"
+                id="rating"
+                value={editManga.rating}
+                onChange={(e) => setEditManga({ ...editManga, rating: e.target.value })}
+                className="w-full border border-gray-300 text-black rounded-md p-2"
+                min="0"
+                max="10"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="comments" className="block text-black font-bold mb-1">
+                Comments
+              </label>
+              <input
+                type="text"
+                id="comments"
+                value={editManga.comments}
+                onChange={(e) => setEditManga({ ...editManga, comments: e.target.value })}
+                className="w-full border border-gray-300 text-black rounded-md p-2"
+              />
+            </div>
+
             <button
               onClick={() => {
                 setIsEditing(false);
@@ -287,7 +371,6 @@ const MangaList = () => {
           </div>
         </div>
       )}
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {mangaList.map((manga) => (
           <div key={manga.id} className="bg-white p-4 rounded-md shadow-md">
