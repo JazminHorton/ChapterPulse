@@ -132,7 +132,105 @@ const MangaList = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
           <div className="bg-white p-8 rounded-md">
             <h2 className="text-2xl font-bold mb-4 text-black">Add Manga</h2>
-            {/* ... (add your input fields for adding manga) */}
+
+            <div className="mb-4">
+              <label htmlFor="title" className="block text-black font-bold mb-1">
+                Title
+              </label>
+              <input
+                type="text"
+                id="title"
+                value={editManga.title}
+                onChange={(e) => setEditManga({ ...editManga, title: e.target.value })}
+                className="w-full border border-gray-300 text-black rounded-md p-2"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="author" className="block text-black font-bold mb-1">
+                Author
+              </label>
+              <input
+                type="text"
+                id="author"
+                value={editManga.author}
+                onChange={(e) => setEditManga({ ...editManga, author: e.target.value })}
+                className="w-full border border-gray-300 text-black rounded-md p-2"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="chapters" className="block text-black font-bold mb-1">
+                Chapters
+              </label>
+              <div className="flex items-center text-black">
+                <input
+                  type="number"
+                  id="chapters"
+                  value={editManga.chapters}
+                  onChange={(e) => setEditManga({ ...editManga, chapters: e.target.value })}
+                  className="w-full border border-gray-300 rounded-md p-2"
+                />
+                <button
+                  onClick={() => setEditManga({ ...editManga, chapters: editManga.chapters + 1 })}
+                  className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600 pl-2"
+                >
+                  +
+                </button>
+                <button
+                  onClick={() => setEditManga({ ...editManga, chapters: Math.max(0, editManga.chapters - 1) })}
+                  className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600 ml-1 pl-2"
+                >
+                  -
+                </button>
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="volumes" className="block text-black font-bold mb-1">
+                Volumes
+              </label>
+              <div className="flex items-center text-black">
+                <input
+                  type="number"
+                  id="volumes"
+                  value={editManga.volumes}
+                  onChange={(e) => setEditManga({ ...editManga, volumes: e.target.value })}
+                  className="w-full border border-gray-300 rounded-md p-2"
+                />
+                <button
+                  onClick={() => setEditManga({ ...editManga, volumes: editManga.volumes + 1 })}
+                  className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600 pl-2"
+                >
+                  +
+                </button>
+                <button
+                  onClick={() => setEditManga({ ...editManga, volumes: Math.max(0, editManga.volumes - 1) })}
+                  className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600 ml-1 pl-2"
+                >
+                  -
+                </button>
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="status" className="block text-black font-bold mb-1">
+                Status
+              </label>
+              <select
+                id="status"
+                value={editManga.status}
+                onChange={(e) => setEditManga({ ...editManga, status: e.target.value })}
+                className="w-full border border-gray-300 text-black rounded-md p-2"
+              >
+                <option value="Reading">Reading</option>
+                <option value="On Hold">On Hold</option>
+                <option value="Dropped">Dropped</option>
+              </select>
+            </div>
+
+            {/* ... (remaining input fields) */}
+
             <button
               onClick={() => {
                 setIsAdding(false);

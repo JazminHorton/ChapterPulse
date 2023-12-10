@@ -58,5 +58,4 @@ const MangaDetails = ({ manga }) => {
     </div>
   );
 };
-//try and add some space between the nav buttons, and also add some space between the manga details and the top of the page
 export default MangaDetails;
