@@ -319,6 +319,22 @@ const MangaList = () => {
             </div>
 
             <div className="mb-4">
+              <label htmlFor="status" className="block text-black font-bold mb-1">
+                Status
+              </label>
+              <select
+                id="status"
+                value={editManga.status}
+                onChange={(e) => setEditManga({ ...editManga, status: e.target.value })}
+                className="w-full border border-gray-300 text-black rounded-md p-2"
+              >
+                <option value="Reading">Reading</option>
+                <option value="On Hold">On Hold</option>
+                <option value="Dropped">Dropped</option>
+              </select>
+            </div>
+            
+            <div className="mb-4">
               <label htmlFor="rating" className="block text-black font-bold mb-1">
                 Rating
               </label>
