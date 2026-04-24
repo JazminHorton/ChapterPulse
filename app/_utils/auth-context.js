@@ -1,37 +1,43 @@
 "use client";
  
 import { useContext, createContext, useState, useEffect } from "react";
-import {
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged,
-  GithubAuthProvider,
-} from "firebase/auth";
-import { auth } from "./firebase";
+// update: All Firebase imports have been completely removed.
  
 const AuthContext = createContext();
  
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
  
-  const gitHubSignIn = () => {
-    const provider = new GithubAuthProvider();
-    return signInWithPopup(auth, provider);
+  // This will eventually make a POST request to your custom backend API
+  const login = async (username, password) => {
+    // Placeholder for the future API call:
+    // const response = await fetch("http://localhost:5000/api/auth/login", { ... })
+    // const data = await response.json();
+    // setUser(data.user);
+    
+    console.log("Custom login triggered. Waiting for backend API to be built!");
+    // Temporary mock user so I can test the UI:
+    setUser({ id: 1, name: "Test User", role: "admin" }); 
   };
  
-  const firebaseSignOut = () => {
-    return signOut(auth);
+  const logout = () => {
+    //Placeholder for clearing the JWT tokens or cookies
+    setUser(null);
   };
  
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
-  }, [user]);
+    // In a custom backend, you usually check for an existing session token 
+    // in local storage or an HTTP-only cookie when the app loads.
+    const checkSession = async () => {
+        // const token = localStorage.getItem("token");
+        // if (token) { ... verify token and set user ... }
+    };
+    checkSession();
+  }, []);
  
+  // expose the new generic functions instead of the Firebase ones
   return (
-    <AuthContext.Provider value={{ user, gitHubSignIn, firebaseSignOut }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
